@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Button from "./button";
+import { ThemeContext } from "../Theme";
 
 const Card = () => {
+
+    const theme = useContext(ThemeContext)
 
     const [valor, setValor] = useState(0)
 
@@ -18,19 +21,25 @@ const Card = () => {
 
     return (
         <div className="card">
-            <div className="card-header">
+            <div className="card-header"
+                style={{background: theme.background,
+                        color: theme.color}}>
                 Primeiro Card
             </div>
-            <div className="card-body">
+            <div className="card-body" 
+            style={{background: theme.background,
+                    color: theme.color}}>
+
                 <Button className="btn btn-success"
-                 onClick ={Adicionar}
+                 onClick = {Adicionar}
                 > Adicionar </Button>
 
                 <Button className="btn btn-danger"
                 onClick={Remover}
                 > Remover </Button>
                 
-                <p>{valor}</p>
+                <p style={{background: theme.background,
+                        color: theme.color}}>{valor}</p>
             </div>
         </div>
     )
