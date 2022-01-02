@@ -5,7 +5,8 @@ import ThemeBtn from "./components/ThemeBtn";
 import { ThemeContext, themes } from "./components/Theme";
 
 const App = () => {
-  const [tema, setTema] = useState(themes.primary);
+  const [tema, setTema] = useState(themes.secondary);
+
     function Alterar (){
         if (tema === themes.primary){
             setTema(themes.secondary)

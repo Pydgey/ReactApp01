@@ -3,9 +3,7 @@ import Button from "./button";
 import { ThemeContext } from "../Theme";
 
 const Card = () => {
-
     const theme = useContext(ThemeContext)
-
     const [valor, setValor] = useState(0)
 
     function Adicionar(){
@@ -16,8 +14,6 @@ const Card = () => {
             setValor(valor - 1)
         }
     }
-    
-
 
     return (
         <div className="card">
@@ -30,11 +26,11 @@ const Card = () => {
             style={{background: theme.background,
                     color: theme.color}}>
 
-                <Button className="btn btn-success"
+                <Button className = "btn btn-success"
                  onClick = {Adicionar}
                 > Adicionar </Button>
 
-                <Button className="btn btn-danger"
+                <Button className = "btn btn-danger"
                 onClick={Remover}
                 > Remover </Button>
                 
