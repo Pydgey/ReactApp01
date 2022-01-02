@@ -1,19 +1,26 @@
 import React, { useState, useContext } from "react";
-import Button from "./button";
+import Counter from "./button";
 import { ThemeContext } from "../Theme";
 
 const Card = () => {
     const theme = useContext(ThemeContext)
-    const [valor, setValor] = useState(0)
+    
+    const Buttons = ({increment, decrement, count}) => (
+        <div>
+            <h1 style={{background: theme.background,
+                        color: theme.color}}>Valor Atual = {count}</h1>
+            <div style={{background: theme.background,
+                        color: theme.color}}>
 
-    function Adicionar(){
-        setValor(valor + 1)
-    }
-    function Remover(){
-        if(valor > 0){
-            setValor(valor - 1)
-        }
-    }
+                <button className="btn btn-success"
+                        onClick={increment}>
+                        Adicionar</button>                
+                <button className="btn btn-danger"
+                        onClick={decrement}>
+                        Remover</button>
+            </div>
+        </div>
+    )
 
     return (
         <div className="card">
@@ -22,21 +29,21 @@ const Card = () => {
                         color: theme.color}}>
                 Primeiro Card
             </div>
+
             <div className="card-body" 
             style={{background: theme.background,
                     color: theme.color}}>
-
-                <Button className = "btn btn-success"
-                 onClick = {Adicionar}
-                > Adicionar </Button>
-
-                <Button className = "btn btn-danger"
-                onClick={Remover}
-                > Remover </Button>
                 
-                <p style={{background: theme.background,
-                        color: theme.color}}>{valor}</p>
             </div>
+            <Counter render = {
+                ({  increment, decrement, count}) => (
+                    <Buttons 
+                    increment={increment}
+                    decrement={decrement}
+                    count={count} 
+                    />
+                )
+            }/>
         </div>
     )
 }
